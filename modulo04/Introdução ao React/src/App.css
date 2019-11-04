@@ -1,0 +1,53 @@
+body {
+  background: #f2f2f2;
+}
+
+header {
+  background: #4a90e2;
+  position: absolute;
+  width: 1024px;
+  height: 64px;
+  left: 0px;
+  top: 0px;
+}
+
+img#logo {
+  position: absolute;
+  width: 120px;
+  height: 23px;
+  left: 42px;
+  top: 20px;
+}
+
+header strong {
+  position: absolute;
+  width: 71px;
+  height: 18px;
+  left: 879px;
+  top: 23px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+img#user-logo {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 958px;
+  top: 20px;
+}
+
+div#postList {
+  position: absolute;
+  width: 724px;
+  height: 977px;
+  left: 150px;
+  top: 70px;
+  border: solid 1px red;
+  
+}
