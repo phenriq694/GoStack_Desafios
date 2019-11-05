@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 
 import logo from '../assets/logo.png'
-import userLogo from '../assets/user-logo.png'
 
-class Header extends Component {
-  render() {
-    return (
-      <header>
-        <img id="logo" src={logo}/>
-        <strong>Meu Perfil</strong>
-        <img id="user-logo" src={userLogo} />
-      </header>
-    )
-  }
+function Header() {
+  return (
+    <header>
+      <nav>
+        <img src={logo}/>
+        <div>
+          <span>Meu Perfil</span>
+          <i className="material-icons">account_circle</i>
+        </div>
+      </nav>
+    </header>
+  )
 }
 
 export default Header
