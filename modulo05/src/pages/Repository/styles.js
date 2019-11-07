@@ -42,6 +42,25 @@ export const Owner = styled.header`
   }
 `;
 
+export const IssueFilter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+
+  button {
+    border-radius: 4px;
+    outline: 0;
+    border: 0;
+    padding: 8px;
+    margin: 0 0.25rem;
+
+    &:nth-child(${props => props.active + 1}) {
+      background: #576574;
+      color: white;
+    }
+  }
+`;
+
 export const IssueList = styled.ul`
   padding-top: 30px;
   margin-top: 30px;
