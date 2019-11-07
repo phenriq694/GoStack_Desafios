@@ -20,6 +20,7 @@ header {
   background: #4a90e2;
   display: flex;
   justify-content: center;
+  border: 5px solid red;
 }
 
 header nav {
@@ -31,10 +32,12 @@ header nav {
   color: #fff;
   min-width: 980px;
   font-size: 14px;
+  border: 5px solid yellow;
 }
 
 nav img {
   height: 24px;
+  border: 5px solid green;
 }
 
 nav > span {
@@ -45,6 +48,7 @@ nav > span {
 nav > div {
   display: flex;
   align-items: center;
+  border: 5px solid pink;
 }
 
 nav > div i {
