@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList, IssueFilter } from './styles';
+import { Loading, Owner, IssueList, IssueFilter, PageChange } from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -25,6 +25,7 @@ export default class Repository extends Component {
       { state: 'closed', name: 'Fechados', active: false },
     ],
     filterIndex: 0,
+    page: 1,
   };
 
   async componentDidMount() {
@@ -54,7 +55,7 @@ export default class Repository extends Component {
 
   loadIssues = async () => {
     const { match } = this.props;
-    const { filters, filterIndex } = this.state;
+    const { filters, filterIndex, page } = this.state;
 
     const repoName = decodeURIComponent(match.params.repository);
 
@@ -64,6 +65,7 @@ export default class Repository extends Component {
         params: {
           state: filters[filterIndex].state,
           per_page: 5,
+          page,
         },
       }),
     ]);
@@ -80,8 +82,23 @@ export default class Repository extends Component {
     this.loadIssues();
   };
 
+  handleChangePage = async action => {
+    const { page } = this.state;
+    await this.setState({
+      page: action === 'back' ? page - 1 : page + 1,
+    });
+    this.loadIssues();
+  };
+
   render() {
-    const { repository, issues, loading, filters, filterIndex } = this.state;
+    const {
+      repository,
+      issues,
+      loading,
+      filters,
+      filterIndex,
+      page,
+    } = this.state;
 
     if (loading) {
       return <Loading>Carregando...</Loading>;
@@ -122,6 +139,22 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssueList>
+
+        <PageChange>
+          <button
+            disabled={page === 1}
+            type="button"
+            onClick={() => this.handleChangePage('back')}
+          >
+            Anterior
+          </button>
+
+          <span>Página {page}</span>
+
+          <button type="button" onClick={() => this.handleChangePage('next')}>
+            Próxima
+          </button>
+        </PageChange>
       </Container>
     );
   }
